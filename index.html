@@ -98,7 +98,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 <button aria-pressed="false" class="district" data-id="shinjuku"><span class="initial">S</span><h3>Shinjuku</h3><p>Dobra na wieczory i nadal bez przesiadek, ale z większą stacją i dłuższym dojściem.</p><div class="walk">Stacja: Shinjuku</div></button>
 </div>
 
-<div class="sectionHead"><div><h2>02 / Tokyo station map</h2><p>Clean street map based on OpenStreetMap, centered to include all four stations.</p></div></div>
+<div class="sectionHead"><div><h2>02 / Tokyo station map</h2><p>OpenStreetMap Standard with all four stations visible. No map API key is required.</p></div></div>
 <section class="mapPanel">
   <div class="mapFrame" id="stationMap" aria-label="Map of Tokyo showing four train stations">
     <iframe title="Tokyo area street map" loading="lazy" width="100%" height="100%" style="border:0;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=139.687%2C35.673%2C139.807%2C35.726&amp;layer=mapnik"></iframe>
@@ -282,24 +282,12 @@ function initStationMap(){
   if(typeof L==="undefined"){showMapFallback();return;}
   if(stationMap)return;
   el.replaceChildren();
-  const city=L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png",{
-    subdomains:"abcd",maxZoom:19,
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions" target="_blank" rel="noopener">CARTO</a>'
-  });
   const standard=L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{
     maxZoom:19,
     attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>'
   });
   try{
-    stationMap=L.map("stationMap",{layers:[city],scrollWheelZoom:false,zoomSnap:0.25,zoomControl:true});
-    let cityLoaded=false,cityErrors=0;
-    city.on("tileload",()=>{cityLoaded=true;});
-    city.on("tileerror",()=>{
-      cityErrors+=1;
-      if(!cityLoaded&&cityErrors>=3&&stationMap&&stationMap.hasLayer(city)){
-        stationMap.removeLayer(city);standard.addTo(stationMap);
-      }
-    });
+    stationMap=L.map("stationMap",{layers:[standard],scrollWheelZoom:false,zoomSnap:0.25,zoomControl:true});
     stations.forEach(s=>{
       const icon=L.divIcon({
         className:"trainStationIcon",
@@ -314,8 +302,6 @@ function initStationMap(){
         .bindPopup(popup,{autoPan:true,maxWidth:300});
     });
     resetStationMapView();
-    L.control.layers({"Light city map (OSM data)":city,"OpenStreetMap Standard":standard},
-      null,{position:"topright",collapsed:true}).addTo(stationMap);
     requestAnimationFrame(()=>stationMap.invalidateSize());
   }catch(err){
     console.warn("Map initialization failed",err);showMapFallback();
