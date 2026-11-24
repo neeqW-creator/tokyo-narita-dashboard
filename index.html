@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="#15252c" name="theme-color"/>
+<title>Tokyo / Narita | 22-24.01.2027</title>
+<style>
+:root{--ink:#14272c;--soft:#5d7379;--cream:#f5f6f2;--paper:#fff;--line:#dbe3dd;--jade:#0e785f;--jadeLight:#e2f3ea;--amber:#a86a16;--amberLight:#fff1d9;--red:#ae4545;--redLight:#ffebeb;--blue:#d9eaf2;--slate:#eef3f5}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial,sans-serif;font-size:15px;line-height:1.55}a{color:inherit}button{font:inherit}
+header{background:radial-gradient(circle at 82% 10%,#386167 0,transparent 30%),linear-gradient(135deg,#172b33 0%,#102228 75%);color:#f4f8f7;padding:35px max(calc((100vw - 1160px)/2),24px) 42px;position:relative;overflow:hidden}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.mark{font-size:12px;letter-spacing:.19em;text-transform:uppercase;color:#b8d5d0;font-weight:800}.chip{font-size:12px;padding:6px 12px;border:1px solid #577476;border-radius:99px;color:#e6f4f2}
+.hero{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:28px;align-items:end;margin-top:46px}.eyebrow{letter-spacing:.12em;font-size:13px;text-transform:uppercase;color:#8edabf;font-weight:800}.hero h1{font-size:clamp(40px,6vw,76px);line-height:1;letter-spacing:-.07em;margin:14px 0 20px}.hero p{color:#d3e0df;max-width:700px;font-size:17px}
+.routeCard{border:1px solid #49656b;border-radius:22px;padding:21px;background:rgba(255,255,255,.07);backdrop-filter:blur(4px)}.routeCard strong{font-size:34px;display:block;letter-spacing:-.04em}.routeCard small{color:#c3d7d5}.routeDot{width:7px;height:7px;border-radius:50%;background:#a2d6bc;display:inline-block;margin-right:8px}
+.container{max-width:1160px;margin:0 auto;padding:26px 24px 70px}.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:-2px}.metric{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.metric b{display:block;font-size:22px;letter-spacing:-.04em}.metric span{font-size:12px;color:var(--soft);font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.alert{display:flex;gap:12px;background:#fff6e4;border:1px solid #ead7ac;border-radius:17px;padding:17px 20px;margin:25px 0}.alert strong{display:block}.alert p{margin:3px 0 0;color:#6d5b42}.alert .symbol{font-size:24px}
+.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:20px;margin:36px 0 18px}.sectionHead h2{margin:0;font-size:27px;letter-spacing:-.04em}.sectionHead p{margin:4px 0 0;color:var(--soft)}.small{font-size:12px;color:var(--soft)}
+.districts{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.district{cursor:pointer;text-align:left;border:1px solid var(--line);border-radius:20px;padding:17px;background:#fff;transition:.18s ease;min-height:190px;display:flex;flex-direction:column;gap:9px}.district:hover{border-color:#78afa2;transform:translateY(-2px)}.district[aria-pressed="true"]{outline:2px solid #0e785f;outline-offset:1px;background:#f2fbf7}.district .initial{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:#e7f1ee;color:#106a56;font-weight:900}.district h3{margin:0;font-size:20px;letter-spacing:-.03em}.district p{margin:0;color:var(--soft);font-size:13px}.district .walk{margin-top:auto;font-size:12px;font-weight:700;color:#366b5d}
+.panel{border:1px solid var(--line);border-radius:22px;background:#fff;overflow:hidden}.panelHead{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;align-items:start;justify-content:space-between;gap:15px}.panelHead h3{margin:0;font-size:22px}.panelHead p{margin:6px 0 0;color:var(--soft)}.pill{display:inline-block;border-radius:50px;background:var(--jadeLight);color:#11664f;padding:5px 11px;font-size:12px;font-weight:800;white-space:nowrap}.pill.warn{background:var(--amberLight);color:#8a5a14}.paneBody{padding:21px 22px}
+.twoCols{display:grid;grid-template-columns:1fr 1fr;gap:18px}.boxLite{background:#f4f7f5;padding:18px;border-radius:16px;border:1px solid #e5ebe7}.boxLite .eyebrow{font-size:11px;color:#36695c}.boxLite h4{font-size:19px;margin:4px 0 8px}.boxLite p{margin:0;color:#526b70}.timeline{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.timechip{background:#fff;border:1px solid var(--line);border-radius:10px;padding:7px 11px;font-weight:750;font-variant-numeric:tabular-nums}.link{display:inline-flex;align-items:center;gap:6px;color:#147460;text-decoration:none;font-weight:750;font-size:13px}.link:hover{text-decoration:underline}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;background:#fff;padding:17px;border-radius:17px;border:1px solid var(--line);margin-bottom:13px}.rangeBox{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.rangeBox label{font-size:13px;color:var(--soft)}input[type=range]{accent-color:#0e785f;width:180px}.buffer{font-weight:900;min-width:62px}.deadline{font-size:13px;color:#4c6666;background:#edf4f1;padding:8px 12px;border-radius:12px;border:1px solid #d9e7e1}
+.tableWrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:680px}th{text-align:left;color:var(--soft);font-size:11px;letter-spacing:.07em;text-transform:uppercase;padding:13px 18px;background:#f6f8f6;border-bottom:1px solid var(--line)}td{border-top:1px solid var(--line);padding:14px 18px}tr:first-child td{border-top:0}tr.recommended{background:#f1faf5}td.time{font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}.status{display:inline-block;border-radius:30px;padding:5px 10px;font-size:12px;font-weight:800;white-space:nowrap}.status.safe{color:var(--jade);background:var(--jadeLight)}.status.tight{color:var(--amber);background:var(--amberLight)}.status.late{color:var(--red);background:var(--redLight)}.legend{padding:16px 20px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
+.hotelGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.hotelCard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:10px}.hotelCard h4{margin:0;font-size:21px;letter-spacing:-.03em}.hotelMeta{display:flex;flex-wrap:wrap;gap:8px}.metaTag{background:#eef4f1;border:1px solid #dce8e2;border-radius:99px;padding:5px 9px;font-size:12px;font-weight:700;color:#335e58}.hotelCard p{margin:0;color:var(--soft)}.hotelCard .price{font-size:28px;font-weight:900;letter-spacing:-.04em}.hotelCard .note{font-size:13px}.hotelCard .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}.hotelCard .submeta{font-size:13px;color:#4d6669}.heroReco{margin:26px 0 8px;background:linear-gradient(135deg,#f1fbf6 0%,#ffffff 100%);border:1px solid #cfe6da;border-radius:22px;padding:20px 22px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(240px,.9fr);gap:18px}.heroReco h3{margin:0;font-size:26px;letter-spacing:-.04em}.heroReco p{margin:6px 0 0;color:#536a6d}.heroReco .big{font-size:30px;font-weight:900;letter-spacing:-.05em}.heroReco .list{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.heroReco .mini{background:#fff;border:1px solid #dbe7e1;border-radius:99px;padding:6px 10px;font-size:12px;font-weight:800;color:#24564f}.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.rankCard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px}.rankCard .rank{font-size:12px;font-weight:900;color:#0b7057;letter-spacing:.08em}.rankCard h4{margin:8px 0 6px;font-size:21px;letter-spacing:-.03em}.rankCard p{margin:0;color:var(--soft)}.rankCard .price{margin-top:8px;font-size:24px;font-weight:900;letter-spacing:-.04em}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);background:#fff;border-radius:11px;padding:10px 13px;text-decoration:none;font-weight:700}.btn.primary{background:#0e785f;color:#fff;border-color:#0e785f}
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.step{background:#fff;border:1px solid var(--line);padding:19px;border-radius:17px}.step .count{font-size:12px;font-weight:900;color:#0b7057}.step strong{display:block;font-size:19px;letter-spacing:-.035em;margin-top:7px}.step p{color:var(--soft);font-size:13px;margin:7px 0 0}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:18px}.notes>div{padding:20px;background:#fff;border:1px solid var(--line);border-radius:17px}.notes h3{margin:0 0 10px}.notes p{margin:6px 0;color:var(--soft)}
+.sources{padding:20px;background:#eaf1ed;border:1px solid #d4e3db;border-radius:17px}.sources a{word-break:break-word;display:block;margin:6px 0;color:#116650;text-decoration:underline;text-underline-offset:3px}
+footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-size:12px;color:#738488}.footlinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.footlinks a{border:1px solid var(--line);padding:8px 13px;background:#fff;border-radius:9px;text-decoration:none}.footlinks a:hover{background:#f1faf5}.empty{padding:24px;color:var(--soft)}
+@media(max-width:850px){.hero,.heroReco{grid-template-columns:1fr}.metrics,.districts,.plan,.hotelGrid,.top3{grid-template-columns:repeat(2,1fr)}.twoCols,.notes{grid-template-columns:1fr}.container{padding-left:16px;padding-right:16px}header{padding-left:16px;padding-right:16px}.sectionHead{align-items:start}}
+@media(max-width:520px){.metrics,.districts,.plan,.hotelGrid,.top3{grid-template-columns:1fr}.metric{padding:14px}.metric b{font-size:19px}.district{min-height:180px;padding:14px}.district h3{font-size:18px}.hero h1{font-size:49px}.panelHead{display:block}.pill{margin-top:9px}.twoCols{gap:10px}.paneBody{padding:14px}.controls{align-items:stretch}.rangeBox{justify-content:space-between;width:100%}.district p{font-size:12px}table{min-width:620px}}
+@media print{header{background:#fff;color:#222}.hero p,.eyebrow{color:#222}.districts button:not([aria-pressed="true"]){display:none}a{text-decoration:underline}button,input{display:none}.controls{display:none}.container{max-width:none}.panel,.district,.boxLite,.hotelCard{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<div class="topline">
+<div class="mark">JAPAN / TRANSPORT PLANNER</div>
+<div class="chip">22-24 stycznia 2027   |   JST (UTC+9)</div>
+</div>
+<div class="hero">
+<div>
+<div class="eyebrow">2 noce w Tokio, bez przesiadek</div>
+<h1>Tokyo <span style="color:#8ecdb8">/</span><br/>Narita.</h1>
+<p>Dashboard pokazuje dzielnice z bezpośrednim dojazdem na Naritę oraz poranne połączenia na niedzielę 24.01. Celem jest być <b>przed Terminalem 1</b> odpowiednio wcześnie, a dopiero potem odebrać quivery i skorzystać z shuttle do YESAWAY.</p>
+</div>
+<div class="routeCard">
+<small>PLAN PODRÓŻY</small>
+<strong>22.01 → 24.01</strong>
+<div style="margin:11px 0 6px"><span class="routeDot"></span>22.01, 19:40   przylot LOT do NRT T1</div>
+<div><span class="routeDot"></span>24.01, 10:00   trzeba być przed Terminalem 1</div>
+<small>8 osób • 3 auta • quivery do 200 cm</small>
+</div>
+</div>
+</header>
+<main class="container">
+<section class="metrics">
+<div class="metric"><span>Dzielnice</span><b>4 warianty</b></div>
+<div class="metric"><span>Przesiadki</span><b>0</b></div>
+<div class="metric"><span>Cel poranny</span><b>Terminal 1</b></div>
+<div class="metric"><span>Godzina docelowa</span><b>24.01 / 10:00</b></div>
+</section>
+<div class="alert">
+<div class="symbol">!</div>
+<div>
+<strong>Najpierw trzeba dotrzeć przed terminal, nie do biura YESAWAY.</strong>
+<p>Dlatego w kalkulatorze poniżej domyślnie liczony jest bufor <b>15 minut przed 10:00</b>. Dopiero po przyjeździe na Terminal 1 dochodzi odbiór quiverów z przechowalni i shuttle do oddziału wypożyczalni.</p>
+</div>
+</div>
+<div class="sectionHead">
+<div>
+<h2>01 / Wybór dzielnicy</h2>
+<p>Kliknij dzielnicę, aby zobaczyć wieczorny dojazd z Narity i poranne połączenia zwrotne. Hotele i linki Booking.com są na samym dole.</p>
+</div>
+</div>
+<div class="districts" id="districts">
+<button aria-pressed="true" class="district" data-id="ueno"><span class="initial">U</span><h3>Ueno</h3><p>Najwygodniejszy transport: Keisei Skyliner. Najlepszy logistycznie dla ciężkiego bagażu.</p><div class="walk">Stacja: Keisei-Ueno</div></button>
+<button aria-pressed="false" class="district" data-id="asakusa"><span class="initial">A</span><h3>Asakusa</h3><p>Bardzo dobry kompromis: klimat dzielnicy i prosty dojazd na Naritę.</p><div class="walk">Stacja: Toei Asakusa</div></button>
+<button aria-pressed="false" class="district" data-id="tokyo"><span class="initial">T</span><h3>Marunouchi</h3><p>Tokyo Station i wygodny N'EX, ale zwykle najwyższe ceny noclegów.</p><div class="walk">Stacja: Tokyo</div></button>
+<button aria-pressed="false" class="district" data-id="shinjuku"><span class="initial">S</span><h3>Shinjuku</h3><p>Dobra na wieczory i nadal bez przesiadek, ale z większą stacją i dłuższym dojściem.</p><div class="walk">Stacja: Shinjuku</div></button>
+</div>
+
+
+
+<div class="sectionHead">
+<div>
+<h2>02 / Szczegóły dla wybranej dzielnicy</h2>
+<p>Wieczorny dojazd po przylocie i poranny powrót na lotnisko.</p>
+</div>
+</div>
+<section class="panel">
+<div class="panelHead">
+<div>
+<h3 id="arrivalTitle">Narita T1 → Keisei-Ueno</h3>
+<p id="arrivalDescription"></p>
+</div>
+<span class="pill" id="arrivalService">Bez przesiadek</span>
+</div>
+<div class="paneBody twoCols">
+<div class="boxLite">
+<div class="eyebrow">Po przylocie 22.01</div>
+<h4>Realistyczne odjazdy wieczorne</h4>
+<div class="timeline" id="inboundTimes"></div>
+</div>
+<div class="boxLite">
+<div class="eyebrow">Praktyczna uwaga</div>
+<h4>Co to oznacza dla Was</h4>
+<p id="arrivalAdvice"></p>
+<div style="margin-top:12px"><a class="link" href="#" id="arrivalSource" rel="noopener" target="_blank">Otwórz źródło rozkładu →</a></div>
+</div>
+</div>
+</section>
+
+
+<div class="sectionHead">
+<div>
+<h2>03 / Poranny planner 24.01</h2>
+<p>Suń bufor, aby zobaczyć, które pociągi dowożą Was przed Terminal 1 z zapasem. W każdej dzielnicy pominięto 2 najwcześniejsze kursy.</p>
+</div>
+</div>
+<div class="controls">
+<div class="rangeBox">
+<label for="bufferRange">Zapas przed 10:00 na Terminalu 1</label>
+<input id="bufferRange" max="60" min="15" step="5" type="range" value="15"/>
+<span class="buffer" id="bufferValue">15 min</span>
+</div>
+<div class="deadline" id="deadlineText">Pociąg powinien dowieźć Was do terminalu najpóźniej ok. 09:45.</div>
+</div>
+<section class="panel">
+<div class="panelHead">
+<div>
+<h3 id="returnTitle">Keisei-Ueno → Narita T1</h3>
+<p id="returnDesc"></p>
+</div>
+<span class="pill" id="returnService">Bez przesiadek</span>
+</div>
+<div class="tableWrap">
+<table>
+<thead>
+<tr>
+<th>Odjazd z Tokio</th>
+<th>Przyjazd NRT T1</th>
+<th>Pociąg</th>
+<th>Szacowane dotarcie przed terminal</th>
+<th>Ocena</th>
+</tr>
+</thead>
+<tbody id="timetableBody"></tbody>
+</table>
+</div>
+<div class="legend" id="tableNote"></div>
+</section>
+<div class="sectionHead"><div><h2>04 / Proponowany plan na 24.01</h2><p>Przy założeniu, że o 10:00 chcecie już stać przed terminalem.</p></div></div>
+<section class="plan">
+<div class="step"><div class="count">ETAP 01</div><strong id="planTrain">07:40 → 08:25</strong><p id="planTrainDesc">Bezpośredni pociąg do Narita T1.</p></div>
+<div class="step"><div class="count">ETAP 02</div><strong>Dojście z peronu</strong><p>Przyjmij około 10 minut na wyjście z peronu i dojście przed terminal.</p></div>
+<div class="step"><div class="count">ETAP 03</div><strong>Odbiór quiverów</strong><p>Dopiero po dotarciu przed terminal odbierzcie quivery z przechowalni i zbierzcie grupę.</p></div>
+<div class="step"><div class="count">ETAP 04</div><strong>Shuttle + 3 auta</strong><p>Po kontakcie z YESAWAY przejazd shuttle do oddziału i formalności odbioru trzech aut.</p></div>
+</section>
+<div class="sectionHead"><div><h2>05 / Co warto wiedzieć</h2></div></div>
+<div class="notes">
+<div>
+<h3>Bagaż i komfort</h3>
+<p>Przy maksymalnie 8 quiverach do 200 cm najlepsza jest baza blisko stacji i bez przesiadek. Pozostawienie sprzętu na lotnisku na 2 noce nadal wygląda sensownie, jeśli przechowalnia potwierdzi przyjęcie i godziny odbioru.</p>
+<p>Skyliner i Narita Express mają miejsca rezerwowane. Długi bagaż wymaga sprawdzenia zasad przewozu i realnej przestrzeni w wagonie.</p>
+</div>
+<div>
+<h3>Ocena dzielnicy</h3>
+<p id="districtSummary"></p>
+<p id="districtMap"></p>
+</div>
+</div>
+<div class="sectionHead"><div><h2>06 / Oficjalne źródła</h2><p>Dane statyczne sprawdzone wcześniej — przed wyjazdem potwierdź rozkład bliżej 24.01.2027.</p></div></div>
+<div class="sources">
+<a href="https://keisei.ekitan.com/naritaacs-i/timetable/station/254-0/d1" rel="noopener" target="_blank">Keisei - odjazdy ze stacji Keisei-Ueno (Skyliner)</a>
+<a href="https://keisei.ekitan.com/naritaacs-i/timetable/station/682-7/d1" rel="noopener" target="_blank">Keisei - odjazdy z Narita Airport Terminal 1</a>
+<a href="https://keisei.ekitan.com/naritaacs-i/timetable/station/222-17/d2" rel="noopener" target="_blank">Keisei / Toei - odjazdy z Asakusa do Narita</a>
+<a href="https://timetables.jreast.co.jp/en/2612/timetable/tt1039/1039181.html" rel="noopener" target="_blank">JR East - Tokyo Station do NRT (weekendy)</a>
+<a href="https://timetables.jreast.co.jp/en/2612/timetable/tt0866/0866121.html" rel="noopener" target="_blank">JR East - Shinjuku do NRT (weekendy)</a>
+</div>
+<div class="sectionHead"><div><h2>07 / Noclegi dla 8 osób</h2><p>Pokoje single, twin lub triple z oddzielnymi łóżkami; priorytetem jest bliskość stacji z bezpośrednim dojazdem na Naritę.</p></div></div><div class="heroReco">
+<div>
+<div class="eyebrow" style="color:#1b7b62">Główna rekomendacja noclegowa</div>
+<h3>HOTEL AMANEK Asakusa Ekimae</h3>
+<p>Bardzo krótkie dojście do stacji Toei Asakusa, bezpośredni pociąg na Naritę i możliwość dobrania oddzielnych łóżek dla 8 osób.</p>
+<div class="list">
+<span class="mini">8 osób / 2 noce</span><span class="mini">od 4 656 zł łącznie</span>
+<span class="mini">1 triple + 3 twin (9 łóżek)</span>
+<span class="mini">1–3 min do stacji</span>
+<span class="mini">~ 3–5 min hotel → peron</span>
+</div>
+<div style="margin-top:12px"><a class="btn primary" href="https://www.booking.com/hotel/jp/hotel-amanek-asakusa-ekimae.html?aid=2438770&amp;checkin=2027-01-22&amp;checkout=2027-01-24&amp;no_rooms=4&amp;group_adults=8&amp;label=mcp_rid-525050089b24ddc4" rel="noopener" target="_blank">Otwórz na Booking.com</a></div>
+</div>
+<div>
+<div class="eyebrow" style="color:#55706f">Dlaczego właśnie ten hotel?</div>
+<div class="big">#1</div>
+<p><b>Od 4 656 zł</b> za 1 triple + 3 twin (taryfy ze szczególnymi warunkami); ok. <b>5 354 zł</b> za zestaw z bezpłatnym odwołaniem. Jedno z 9 łóżek pozostaje niewykorzystane. Dostępność czterech pokoi łącznie potwierdź w koszyku.</p>
+</div>
+</div><div class="sectionHead">
+<div>
+<h2>08 / TOP 2 hoteli</h2>
+<p>Orientacyjne sumy za pobyt 8 osób przez 2 noce (22–24.01.2027), liczone dla wskazanych typów pokoi. Ceny i dostępność mogą się zmienić.</p>
+</div>
+</div><div class="top3">
+<article class="rankCard">
+<div class="rank">#1</div>
+<h4>HOTEL AMANEK Asakusa Ekimae</h4><div class="price">od 4 656 zł</div><p><small>ok. 5 354 zł z bezpłatnym odwołaniem</small></p>
+<p>Asakusa · najkrótsze dojście do stacji</p><p><b>Układ: </b>1 triple + 3 twin: 9 osobnych łóżek dla 8 osób. Jeden pokój twin dla jednej osoby.</p><p>Hotel → peron: ~3–5 min</p><a class="btn primary" href="https://www.booking.com/hotel/jp/hotel-amanek-asakusa-ekimae.html?aid=2438770&amp;checkin=2027-01-22&amp;checkout=2027-01-24&amp;no_rooms=4&amp;group_adults=8&amp;label=mcp_rid-525050089b24ddc4" rel="noopener" target="_blank">Booking.com — 8 osób</a></article>
+<article class="rankCard">
+<div class="rank">#2</div>
+<h4>WPÜ HOTEL Shinjuku</h4><div class="price">od 4 593 zł</div><p><small>ok. 7 925 zł z bezpłatnym odwołaniem</small></p>
+<p>Shinjuku · idealny układ 4 twin</p><p><b>Układ: </b>4 pokoje twin × 2 osobne łóżka. Odpowiednie typy dostępne w zapytaniu Booking.</p><p>Hotel → peron N’EX: ~10–15 min</p><a class="btn primary" href="https://www.booking.com/hotel/jp/wpu-shinjuku.html?aid=2438770&amp;checkin=2027-01-22&amp;checkout=2027-01-24&amp;no_rooms=4&amp;group_adults=8&amp;label=mcp_rid-df58ac383c15891d" rel="noopener" target="_blank">Booking.com — 8 osób</a></article>
+
+</div><div class="sectionHead">
+<div>
+<h2>09 / Hotele w wybranej dzielnicy</h2>
+<p>Kliknij dzielnicę u góry, aby zobaczyć jej hotele. Ceny obejmują 8 osób na 2 noce (22–24.01), chyba że oznaczono inaczej; kliknij Booking.com, aby sprawdzić finalne oferty.</p>
+</div>
+</div><div class="hotelGrid" id="hotelGrid"></div><footer>
+<b>Uwaga:</b> Dashboard ma charakter planistyczny i nie pobiera rozkładów na żywo. Ceny hoteli to sumy wskazanych taryf Booking.com za 2 noce, 22–24.01.2027, dla 8 osób; nie stanowią gwarancji rezerwacji. Taryfy ze „szczególnymi warunkami” mogą być bezzwrotne lub mieć inne ograniczenia. Gwiazdka (*) oznacza cenę z wyszukiwania ogólnego, bez potwierdzenia zgodnego układu łóżek. Przed zapłatą sprawdź cenę, konfigurację łóżek i zasady anulowania w koszyku.
+    <div class="footlinks">
+<a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/index.php" rel="noopener" target="_blank">Bilety Skyliner</a>
+<a href="https://www.jreast.co.jp/multi/en/nex/" rel="noopener" target="_blank">Narita Express</a>
+<a href="https://www.google.com/maps/search/?api=1&amp;query=YESAWAY%20Narita%202377-1%20Iwayama" rel="noopener" target="_blank">Oddział YESAWAY na mapie</a>
+<a href="#" onclick="window.print();return false">Wydrukuj plan</a>
+</div>
+</footer>
+</main>
+<script>
+const data={
+  ueno:{
+    name:'Ueno',
+    station:'Keisei-Ueno',
+    arrivalTitle:'Narita T1 → Keisei-Ueno',
+    arrivalDesc:'Keisei Skyliner bez przesiadek, zwykle około 45–55 minut. Najmniej stresująca opcja z ciężkim bagażem.',
+    arrivalService:'Keisei Skyliner',
+    inbound:['21:00','21:20','21:40','22:00','22:20','22:40','23:00'],
+    advice:'Po przylocie o 19:40 sensownie celować raczej w pociąg po 21:00. Ueno daje bardzo wygodny poranny dojazd na lotnisko; hoteli nie uwzględniamy obecnie na krótkiej liście dla tej dzielnicy.',
+    source:'https://keisei.ekitan.com/naritaacs-i/timetable/station/682-7/d1',
+    returnDesc:'Niedziela: bezpośredni Skyliner. Najmocniejsza opcja logistycznie dla 8 osób z dużym bagażem.',
+    rows:[['08:00','08:44','Skyliner'],['08:17','09:07','Skyliner'],['08:40','09:25','Skyliner'],['09:00','09:44','Skyliner']],
+    preferred:'08:40',
+    map:'https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station',
+    summary:'Najlepsza dzielnica transportowo. Jeśli priorytetem jest najprostszy dojazd z i na lotnisko, Ueno wygrywa. Warto porównać noclegi Ueno pod kątem oddzielnych łóżek oraz dojścia do Skylinera.',
+    hotels:[]
+  },
+  asakusa:{
+    name:'Asakusa',
+    station:'Asakusa (Toei)',
+    arrivalTitle:'Narita T1 → Asakusa (Toei)',
+    arrivalDesc:'Bezpośredni Access Express, zwykle około 60–75 minut. Mniej kursów niż w Ueno, ale nadal bez przesiadki.',
+    arrivalService:'Access Express',
+    inbound:['20:05','20:34','21:09'],
+    advice:'Asakusa daje dobry balans: ładna okolica, hotele i sensowny poranny dojazd. Wieczorem kursów jest mniej niż do Ueno, więc warto nie przegapić dogodnego pociągu.',
+    source:'https://keisei.ekitan.com/naritaacs-i/timetable/station/682-7/d1',
+    returnDesc:'Niedzielne bezpośrednie Access Express. Kursują rzadziej niż Skyliner, ale przy dobrym doborze hotelu działają bardzo dobrze.',
+    rows:[['07:52','08:59','Access Express'],['08:31','09:40','Access Express'],['09:21','10:32','Access Express']],
+    preferred:'07:52',
+    map:'https://www.google.com/maps/search/?api=1&query=Asakusa+Station+Toei',
+    summary:'Bardzo dobry kompromis: klimat dzielnicy, bardzo bliski hotel AMANEK i bezpośredni pociąg na Naritę. To moja główna rekomendacja noclegowa dla Waszej grupy.',
+    hotels:[
+      {title:'HOTEL AMANEK Asakusa Ekimae', area:'Asakusa', price:'od 4 656 zł', rateNote:'ok. 5 354 zł z bezpłatnym odwołaniem', roommix:'9 osobnych łóżek dla 8 osób (jedno niewykorzystane)', walk:'1–3 min do Toei Asakusa', platformWalk:'~ 3–5 min hotel → peron', note:'W aktualnym zestawieniu jest 1 triple i 3 twin. Wymaga potwierdzenia łącznej rezerwacji, bo pokój triple jest tylko jeden. Bez wspólnych łóżek double.', cta:'Booking.com — 8 osób', href:'https://www.booking.com/hotel/jp/hotel-amanek-asakusa-ekimae.html?aid=2438770&checkin=2027-01-22&checkout=2027-01-24&no_rooms=4&group_adults=8&label=mcp_rid-525050089b24ddc4', tag:'główna rekomendacja'},
+      {title:'APA Hotel Asakusa Ekimae', area:'Asakusa', price:'ok. 3 703 zł*', rateNote:'* wynik ogólny dla 4 pokoi, niepotwierdzony układ łóżek', roommix:'brak 4 potwierdzonych pokoi twin w aktualnym zapytaniu', walk:'bardzo blisko stacji Toei', platformWalk:'~ 3–5 min hotel → peron', note:'Bardzo dobra lokalizacja, ale układ ośmiu osobnych łóżek wymaga dodatkowego potwierdzenia przed rezerwacją.', cta:'Booking.com — 8 osób', href:'https://www.booking.com/hotel/jp/apa-hotel-asakusa-ekimae.html?aid=2438770&checkin=2027-01-22&checkout=2027-01-24&no_rooms=4&group_adults=8&selected_currency=PLN&label=mcp_rid-f216f177d62117fd', tag:'do weryfikacji'}
+    ]
+  },
+  tokyo:{
+    name:'Marunouchi',
+    station:'Tokyo Station',
+    arrivalTitle:'Narita T1 → Tokyo Station',
+    arrivalDesc:'Narita Express bez przesiadek, około 60 minut. Sama stacja Tokyo jest jednak duża i mniej wygodna z bardzo ciężkim bagażem.',
+    arrivalService:'JR Narita Express',
+    inbound:['20:44','21:44'],
+    advice:'Marunouchi sprawdza się, jeśli chcecie najbardziej klasyczną i centralną bazę. Minusy to niektóre hotele są droższe i większe odległości piesze w obrębie samej stacji.',
+    source:'https://timetables.jreast.co.jp/en/2612/timetable/tt1130/1130020.html',
+    returnDesc:'Niedzielne bezpośrednie Narita Express z Tokyo Station.',
+    rows:[['07:56','09:02','N\'EX'],['08:30','09:29','N\'EX'],['09:00','09:58','N\'EX']],
+    preferred:'08:30',
+    map:'https://www.google.com/maps/search/?api=1&query=Tokyo+Station+Marunouchi',
+    summary:'Najwygodniejsze centrum, ale niekoniecznie najlepsze logistycznie dla grupy z quiverami. Wygrywa komfort lokalizacji, przegrywa cena i skala stacji.',
+    hotels:[
+      {title:'Hotel Ryumeikan Tokyo', area:'Tokyo Station / Yaesu', price:'Brak wiarygodnej wyceny', rateNote:'nie znaleziono 4 twin w podanym terminie', roommix:'brak potwierdzenia 8 osobnych łóżek dla 22–24.01', walk:'~ 3 min do wejścia Tokyo Station', platformWalk:'~ 7–10 min hotel → peron N’EX', note:'Dobrze położony przy stacji, lecz dostępność odpowiedniej konfiguracji single/twin dla wszystkich 8 osób nie została potwierdzona. Nie rezerwuj zwykłych double.', cta:'Booking.com — 8 osób', href:'https://www.booking.com/hotel/jp/ryumeikan-tokyo.html?aid=2438770&checkin=2027-01-22&checkout=2027-01-24&no_rooms=4&group_adults=8&label=mcp_rid-8012cf04743259f5', tag:'do sprawdzenia'}
+    ]
+  },
+  shinjuku:{
+    name:'Shinjuku',
+    station:'Shinjuku Station',
+    arrivalTitle:'Narita T1 → Shinjuku',
+    arrivalDesc:'Bezpośredni Narita Express, zwykle około 80–95 minut. Stacja jest duża, ale daje dużo opcji wieczorem.',
+    arrivalService:'JR Narita Express',
+    inbound:['20:44','21:44'],
+    advice:'Shinjuku jest świetne na wieczory i restauracje, ale sama stacja jest rozległa. Przy ciężkim bagażu warto wybierać hotel naprawdę blisko właściwego wyjścia.',
+    source:'https://timetables.jreast.co.jp/en/2612/timetable/tt1130/1130020.html',
+    returnDesc:'Niedzielne bezpośrednie Narita Express z Shinjuku.',
+    rows:[['07:27','09:02','N\'EX'],['08:05','09:29','N\'EX']],
+    preferred:'08:05',
+    map:'https://www.google.com/maps/search/?api=1&query=Shinjuku+Station',
+    summary:'Bardzo dobra alternatywa, jeśli zależy Wam na ciekawszym wieczorze w Tokio. Nadal bez przesiadek, ale z większą stacją i mniej komfortowym porankiem niż w Ueno lub Asakusa.',
+    hotels:[
+      {title:'WPÜ HOTEL Shinjuku', area:'Shinjuku', price:'od 4 593 zł', rateNote:'ok. 7 925 zł z bezpłatnym odwołaniem', roommix:'4 × twin (2 osobne łóżka) = dokładnie 8 łóżek', walk:'ok. 6–9 min do stacji JR', platformWalk:'~ 10–15 min hotel → peron N’EX', note:'Hotel pokazuje co najmniej 4 pokoje Standard Twin w zapytaniu dla 8 osób. Najprostszy układ łóżek, ale najdłuższy spacer w obrębie dużej stacji.', cta:'Booking.com — 8 osób', href:'https://www.booking.com/hotel/jp/wpu-shinjuku.html?aid=2438770&checkin=2027-01-22&checkout=2027-01-24&no_rooms=4&group_adults=8&label=mcp_rid-df58ac383c15891d', tag:'idealnie 4 twin'}
+    ]
+  }
+};
+const pad=n=>String(n).padStart(2,'0');
+const minutes=t=>{const a=t.split(':').map(Number);return a[0]*60+a[1]};
+const fmt=n=>pad(Math.floor(n/60))+':'+pad(n%60);
+let selected='ueno';
+const $=id=>document.getElementById(id);
+function renderHotels(list){
+  if (!list.length) { $('hotelGrid').innerHTML='<div class="hotelCard"><h4>Brak hoteli na krótkiej liście w tej dzielnicy</h4><p>Hotele APA usunięte z rekomendacji Ueno. Nadal możesz porównać bezpośrednie połączenia kolejowe z Keisei-Ueno.</p></div>'; return; }
+  $('hotelGrid').innerHTML=list.map((h,i)=>`<article class="hotelCard"><div class="hotelMeta"><span class="pill ${i===0?'':'warn'}">${h.tag}</span><span class="metaTag">${h.area}</span><span class="metaTag">${h.walk}</span></div><h4>${h.title}</h4><div class="price">${h.price}</div><p class="submeta">${h.rateNote || "Cena do ponownej weryfikacji"}</p><p><b>Układ pokoi:</b> ${h.roommix}</p><p class="submeta"><b>Hotel → peron:</b> ${h.platformWalk || 'do oszacowania'}</p><p class="note">${h.note}</p><div class="actions"><a class="btn primary" href="${h.href}" target="_blank" rel="noopener">${h.cta}</a></div></article>`).join('');
+}
+function render(){
+  const d=data[selected];
+  const buffer=Number($('bufferRange').value);
+  const target=600-buffer; // target arrival before terminal
+  document.querySelectorAll('.district').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.id===selected)));
+  $('arrivalTitle').textContent=d.arrivalTitle;
+  $('arrivalDescription').textContent=d.arrivalDesc;
+  $('arrivalService').textContent=d.arrivalService;
+  $('inboundTimes').innerHTML=d.inbound.map(x=>'<span class="timechip">'+x+'</span>').join('');
+  $('arrivalAdvice').textContent=d.advice;
+  $('arrivalSource').href=d.source;
+  $('returnTitle').textContent=d.station+' → Narita T1';
+  $('returnDesc').textContent=d.returnDesc;
+  $('returnService').textContent=d.arrivalService;
+  $('bufferValue').textContent=buffer+' min';
+  $('deadlineText').textContent='Pociąg powinien dowieźć Was do terminalu najpóźniej ok. '+fmt(target)+'.';
+  const tbody=$('timetableBody'); tbody.innerHTML='';
+  d.rows.forEach(r=>{
+    const dep=r[0],arr=r[1],train=r[2];
+    const eta=minutes(arr)+10; // platform -> terminal frontage
+    const margin=target-eta;
+    const cls=margin>=5?'safe':margin>=-5?'tight':'late';
+    const label=cls==='safe'?'Spełnia bufor':cls==='tight'?'Mały zapas':'Za późno';
+    const tr=document.createElement('tr');
+    tr.className=dep===d.preferred?'recommended':'';
+    tr.innerHTML='<td class="time">'+dep+(dep===d.preferred?' <span style="font-size:10px;color:#0e785f">★</span>':'')+'</td><td class="time">'+arr+'</td><td>'+train+'</td><td class="time">'+fmt(eta)+'</td><td><span class="status '+cls+'">'+label+'</span></td>';
+    tbody.appendChild(tr);
+  });
+  $('tableNote').textContent='Szacowane dotarcie przed terminal = przyjazd pociągu do Narita Airport Terminal 1 + około 10 minut na wyjście z peronu i dojście przed terminal. Bufor suwaka oznacza, ile minut przed 10:00 chcecie już tam być.';
+  const pref=d.rows.find(x=>x[0]===d.preferred) || d.rows[0];
+  $('planTrain').textContent=pref[0]+' → '+pref[1];
+  $('planTrainDesc').textContent=d.arrivalService+' z '+d.station+', bez przesiadek, do Narita T1. Ten kurs najlepiej bilansuje czas i zapas przy aktualnym układzie.';
+  $('districtSummary').textContent=d.summary;
+  $('districtMap').innerHTML='<a class="link" target="_blank" rel="noopener" href="'+d.map+'">Zobacz stację '+d.station+' na Google Maps →</a>';
+  renderHotels(d.hotels);
+}
+document.querySelectorAll('.district').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.id;render()}));
+$('bufferRange').addEventListener('input',render);
+render();
+</script>
+</body>
+</html>
