@@ -41,8 +41,19 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 .stationPopup a{color:#0d745a;font-weight:800}
 @media(max-width:850px){.mapLegend{grid-template-columns:repeat(2,minmax(0,1fr))}.mapStop:nth-child(2){border-right:0}}
 @media(max-width:520px){.mapLegend{grid-template-columns:1fr}.mapStop{border-right:0;border-bottom:1px solid var(--line)}}
+.mapFrame{height:455px}
+.trainPin{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:136px;cursor:pointer;filter:drop-shadow(0 2px 5px rgba(20,39,44,.13))}
+.trainPinIcon{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border:1px solid #d8e4e5;border-radius:50%;background:#fff;color:#0f6175;font-size:19px;box-shadow:0 2px 8px rgba(18,52,61,.12);line-height:1}
+.trainPinLabel{display:block;background:rgba(255,255,255,.95);border:1px solid #d9e3e3;border-radius:8px;padding:3px 8px;color:#173c45;font-size:12px;font-weight:800;line-height:1.25;text-align:center;white-space:nowrap;box-shadow:0 2px 7px rgba(18,52,61,.1)}
+.trainPin:hover .trainPinIcon,.trainPin.active .trainPinIcon{outline:3px solid #9bd9bd}
+.stationPopup{min-width:185px;color:#153d43;font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.stationPopup b{font-size:15px}.stationPopup p{margin:7px 0 10px;line-height:1.45}
+.stationPopup a{color:#0d745a;font-weight:800}
+.maplibregl-popup-content{border-radius:12px!important;padding:14px 16px!important;box-shadow:0 5px 24px #10222830!important}
+.maplibregl-ctrl-group{border-radius:12px!important;overflow:hidden}
+@media(max-width:520px){.mapFrame{height:435px}.trainPinIcon{width:31px;height:31px;font-size:16px}.trainPinLabel{font-size:10px;white-space:normal;max-width:105px;line-height:1.2;padding:3px 5px}.trainPin{min-width:94px}}
 </style>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+<link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css"/>
 </head>
 <body>
 <header>
@@ -92,12 +103,12 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 <button aria-pressed="false" class="district" data-id="shinjuku"><span class="initial">S</span><h3>Shinjuku</h3><p>Dobra na wieczory i nadal bez przesiadek, ale z większą stacją i dłuższym dojściem.</p><div class="walk">Stacja: Shinjuku</div></button>
 </div>
 
-<div class="sectionHead"><div><h2>02 / Tokyo train stations</h2><p>Interactive city map with English station labels. Click a pin for train information and a Google Maps link.</p></div></div>
+<div class="sectionHead"><div><h2>02 / Tokyo train stations</h2><p>Interactive Tokyo city map with a bright, detailed street style, railway markers and English labels. Click a station pin to view its train connection.</p></div></div>
 <section class="mapPanel">
   <div id="stationMap" class="mapFrame" aria-label="Mapa Tokio ze stacjami">
     <iframe title="Mapa ulic Tokio" loading="lazy" width="100%" height="100%" style="border:0;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=139.670%2C35.665%2C139.825%2C35.735&amp;layer=mapnik"></iframe>
   </div>
-  <div class="mapCaption"><strong>Tap a station pin</strong> for its English name, train connection and direct Google Maps link. You can also select a station below the map.</div>
+  <div class="mapCaption"><strong>Tap a train pin</strong> to see the English station name, direct Narita train and Google Maps link. Drag or zoom to explore Tokyo.</div>
   <div class="mapLegend" id="mapLegend" aria-label="Tokyo railway stations">
     <button class="mapStop" data-station="ueno" type="button"><b>Keisei-Ueno Station</b><small>Keisei Skyliner · Direct to Narita Airport</small></button>
     <button class="mapStop" data-station="asakusa" type="button"><b>Asakusa Station (Toei)</b><small>Access Express · Direct services to Narita Airport</small></button>
@@ -238,43 +249,73 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 </div><div class="sectionHead">
 <div>
 <h2>11 / Hotele w wybranej dzielnicy</h2>
-<p>Kliknij dzielnicę u góry, aby zobaczyć jej hotele. Ceny obejmują 8 osób na 2 noce (22–24.01), chyba że oznaczono inaczej; kliknij Booking.com, aby sprawdzić finalne oferty.</p>
-</div>
-</div><div class="hotelGrid" id="hotelGrid"></div><footer>
-<b>Uwaga:</b> Dashboard ma charakter planistyczny i nie pobiera rozkładów na żywo. Ceny hoteli to sumy wskazanych taryf Booking.com za 2 noce, 22–24.01.2027, dla 8 osób; nie stanowią gwarancji rezerwacji. Taryfy ze „szczególnymi warunkami” mogą być bezzwrotne lub mieć inne ograniczenia. Gwiazdka (*) oznacza cenę z wyszukiwania ogólnego, bez potwierdzenia zgodnego układu łóżek. Przed zapłatą sprawdź cenę, konfigurację łóżek i zasady anulowania w koszyku.
-    <div class="footlinks">
-<a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/index.php" rel="noopener" target="_blank">Bilety Skyliner</a>
-<a href="https://www.jreast.co.jp/multi/en/nex/" rel="noopener" target="_blank">Narita Express</a>
-<a href="https://www.google.com/maps/search/?api=1&amp;query=YESAWAY%20Narita%202377-1%20Iwayama" rel="noopener" target="_blank">Oddział YESAWAY na mapie</a>
-<a href="#" onclick="window.print();return false">Wydrukuj plan</a>
-</div>
-</footer>
-</main>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script>
-const stations=[
-  {id:"ueno",name:"Keisei-Ueno Station",label:"Keisei-Ueno",route:"Keisei Skyliner",details:"Direct airport express to Narita Airport Terminal 1. Approx. 45–55 minutes.",coords:[35.7126,139.7754],maps:"https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station"},
-  {id:"asakusa",name:"Asakusa Station (Toei Asakusa Line)",label:"Asakusa (Toei)",route:"Keisei Access Express",details:"Some trains run directly to Narita Airport Terminal 1. Approx. 60–75 minutes. Check the train destination.",coords:[35.7108,139.7986],maps:"https://www.google.com/maps/search/?api=1&query=Toei+Asakusa+Station+Tokyo"},
-  {id:"tokyo",name:"Tokyo Station",label:"Tokyo Station",route:"JR Narita Express (N'EX)",details:"Direct express to Narita Airport Terminal 1. Approx. 60 minutes.",coords:[35.6812,139.7671],maps:"https://www.google.com/maps/search/?api=1&query=Tokyo+Station"},
-  {id:"shinjuku",name:"Shinjuku Station",label:"Shinjuku Station",route:"JR Narita Express (N'EX)",details:"Direct express to Narita Airport Terminal 1. Approx. 80–95 minutes.",coords:[35.6900,139.7006],maps:"https://www.google.com/maps/search/?api=1&query=Shinjuku+Station"}
+<p>Kliknij dzielnicę u góry, aconst stations=[
+  {id:"ueno",name:"Keisei-Ueno Station",label:"Keisei-Ueno",route:"Keisei Skyliner",details:"Direct express to Narita Airport Terminal 1. Usually 45–55 minutes.",coords:[35.7126,139.7754],maps:"https://www.google.com/maps/search/?api=1&query=Keisei-Ueno+Station"},
+  {id:"asakusa",name:"Asakusa Station (Toei Asakusa Line)",label:"Asakusa Station",route:"Keisei Access Express",details:"Some trains run directly to Narita Airport Terminal 1. Usually 60–75 minutes; check the destination.",coords:[35.7108,139.7986],maps:"https://www.google.com/maps/search/?api=1&query=Toei+Asakusa+Station+Tokyo"},
+  {id:"tokyo",name:"Tokyo Station",label:"Tokyo Station",route:"JR Narita Express (N'EX)",details:"Direct express to Narita Airport Terminal 1. Usually around 60 minutes.",coords:[35.6812,139.7671],maps:"https://www.google.com/maps/search/?api=1&query=Tokyo+Station"},
+  {id:"shinjuku",name:"Shinjuku Station",label:"Shinjuku Station",route:"JR Narita Express (N'EX)",details:"Direct express to Narita Airport Terminal 1. Usually 80–95 minutes.",coords:[35.6900,139.7006],maps:"https://www.google.com/maps/search/?api=1&query=Shinjuku+Station"}
 ];
-let stationMap;
+let stationMap=null;
 const stationMarkers={};
+const stationBounds=[[139.690,35.673],[139.807,35.726]];
 function initStationMap(){
-  if(stationMap || typeof L === "undefined") return;
   const el=document.getElementById("stationMap");
-  if(!el)return;
+  if(!el || stationMap || typeof maplibregl==="undefined")return;
   el.replaceChildren();
-  stationMap=L.map("stationMap",{scrollWheelZoom:false});
-  const tiles=L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
-    attribution:"&copy; OpenStreetMap contributors",maxZoom:19
-  }).addTo(stationMap);
-  let tilesLoaded=0;
-  tiles.on("tileload",()=>{tilesLoaded++});
-  tiles.on("tileerror",()=>{if(tilesLoaded===0)setTimeout(()=>{if(tilesLoaded===0)showMapFallback()},1200)});
-  const bounds=[];
-  stations.forEach(s=>{
-    bounds.push(s.coords);
+  let loaded=false;
+  try{
+    stationMap=new maplibregl.Map({
+      container:el,
+      style:"https://tiles.openfreemap.org/styles/liberty",
+      center:[139.756,35.696],
+      zoom:11.4,
+      attributionControl:true,
+      cooperativeGestures:false,
+      scrollZoom:false
+    });
+    stationMap.addControl(new maplibregl.NavigationControl({showCompass:false}),"top-right");
+    stationMap.on("load",()=>{loaded=true});
+    stationMap.on("error",(err)=>{if(!loaded)console.warn("City map loading:",err?.error?.message||"retrying")});
+    stations.forEach(s=>{
+      const pin=document.createElement("div");
+      pin.className="trainPin";
+      pin.setAttribute("role","button");
+      pin.setAttribute("tabindex","0");
+      pin.setAttribute("aria-label",s.name+" — "+s.route);
+      const circle=document.createElement("span");
+      circle.className="trainPinIcon";circle.textContent="🚆";
+      const name=document.createElement("span");
+      name.className="trainPinLabel";name.textContent=s.label;
+      pin.append(circle,name);
+      const popupContent='<div class="stationPopup"><b>'+s.name+'</b><p><strong>'+s.route+'</strong><br>'+s.details+'</p><a href="'+s.maps+'" target="_blank" rel="noopener">Open in Google Maps ↗</a></div>';
+      const popup=new maplibregl.Popup({offset:27,maxWidth:"285px"}).setHTML(popupContent);
+      const marker=new maplibregl.Marker({element:pin,anchor:"center"}).setLngLat([s.coords[1],s.coords[0]]).setPopup(popup).addTo(stationMap);
+      pin.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();marker.togglePopup();}});
+      stationMarkers[s.id]=marker;
+    });
+    stationMap.fitBounds(stationBounds,{padding:window.innerWidth<580?{top:50,bottom:50,left:35,right:35}:{top:65,bottom:65,left:75,right:75},maxZoom:12.5,duration:0});
+    // If the provider is unavailable, preserve usable station links below the map.
+    setTimeout(()=>{if(!loaded)showMapFallback()},12000);
+  }catch(err){console.warn("Map initialization failed",err);showMapFallback();}
+}
+function selectMapStation(id){
+  const s=stations.find(x=>x.id===id);if(!s)return;
+  const marker=stationMarkers[id];
+  if(stationMap && marker){
+    stationMap.flyTo({center:[s.coords[1],s.coords[0]],zoom:13.2,essential:true});
+    marker.togglePopup();
+  }else{
+    window.open(s.maps,"_blank","noopener");
+  }
+  document.querySelectorAll(".mapStop").forEach(b=>b.classList.toggle("active",b.dataset.station===id));
+  if(typeof selected!=="undefined"){selected=id;render();}
+}
+function showMapFallback(){
+  const el=document.getElementById("stationMap");if(!el)return;
+  if(stationMap){stationMap.remove();stationMap=null;}
+  el.innerHTML='<iframe title="Tokyo city street map" loading="lazy" width="100%" height="100%" style="border:0;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=139.670%2C35.665%2C139.825%2C35.735&amp;layer=mapnik"></iframe>';
+}
+  bounds.push(s.coords);
     const popup='<div class="stationPopup"><b>'+s.name+'</b><p>'+s.route+'<br>'+s.details+'</p><a href="'+s.maps+'" target="_blank" rel="noopener">Open in Google Maps ↗</a></div>';
     stationMarkers[s.id]=L.marker(s.coords).addTo(stationMap).bindTooltip(s.label,{permanent:true,direction:"top",offset:[0,-13],className:"stationTooltip"}).bindPopup(popup,{maxWidth:285});
   });
