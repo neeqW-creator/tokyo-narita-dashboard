@@ -47,6 +47,52 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 .leaflet-popup-content-wrapper{border-radius:12px!important}
 @media(max-width:850px){.mapLegend{grid-template-columns:repeat(2,1fr)}.mapStop:nth-child(2){border-right:0}}
 @media(max-width:520px){.mapFrame{height:420px}.mapLegend{grid-template-columns:1fr}.mapStop{border-right:0;border-bottom:1px solid var(--line)}.leaflet-tooltip.stationTooltip{font-size:10px;padding:3px 5px}}
+
+/* Large station tiles: individually colored and accessible */
+.districts{grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.district{position:relative;min-height:240px;padding:22px 20px 19px;border:2px solid var(--tile-border);border-radius:22px;background:var(--tile-bg);color:var(--tile-ink);display:flex;flex-direction:column;align-items:stretch;gap:10px;text-align:left;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
+.district[data-id="ueno"]{--tile-bg:#e8f7ef;--tile-border:#b6ddce;--tile-ink:#0c6252;--tile-icon:#d1ecdf}
+.district[data-id="asakusa"]{--tile-bg:#fff0e8;--tile-border:#edc4af;--tile-ink:#a44c38;--tile-icon:#f9dac8}
+.district[data-id="tokyo"]{--tile-bg:#eaf2ff;--tile-border:#c4d7f2;--tile-ink:#2a619d;--tile-icon:#d6e5ff}
+.district[data-id="shinjuku"]{--tile-bg:#f2edfc;--tile-border:#d8c7ee;--tile-ink:#6d4da0;--tile-icon:#e6ddf7}
+.district:hover{transform:translateY(-3px);box-shadow:0 9px 23px #17333b12;border-color:var(--tile-ink)}
+.district[aria-pressed="true"]{outline:3px solid var(--tile-ink);outline-offset:2px;box-shadow:0 7px 21px #163b3c16}
+.district:focus-visible{outline:3px solid var(--tile-ink);outline-offset:3px}
+.district .districtTop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.district .initial{width:44px;height:44px;display:grid;place-items:center;background:var(--tile-icon);color:var(--tile-ink);border-radius:13px;font-size:22px}
+.district .districtArea{font-size:10px;letter-spacing:.14em;font-weight:850;color:var(--tile-ink)}
+.district h3{font-size:clamp(22px,1.85vw,27px);line-height:1.08;letter-spacing:-.05em;font-weight:850;color:var(--tile-ink);margin:3px 0 0}
+.district h3 span{display:block;margin-top:4px;font-size:.7em;letter-spacing:-.025em;font-weight:750}
+.district p{font-size:13px;line-height:1.42;color:var(--tile-ink);opacity:.9}
+.district .walk{margin-top:auto;padding-top:11px;border-top:1px solid var(--tile-border);font-size:12px;line-height:1.35;font-weight:800;color:var(--tile-ink)}
+/* Selected station's color carries through all dependent sections. */
+#dashboard[data-station="ueno"]{--station-accent:#0b7057;--station-ink:#125a4b;--station-pale:#e7f6ee;--station-tint:#f5fbf8;--station-border:#b7decd}
+#dashboard[data-station="asakusa"]{--station-accent:#aa523a;--station-ink:#904432;--station-pale:#fff0e7;--station-tint:#fff8f3;--station-border:#eac4b2}
+#dashboard[data-station="tokyo"]{--station-accent:#326aa7;--station-ink:#275b94;--station-pale:#e8f1ff;--station-tint:#f5f9ff;--station-border:#c2d8f3}
+#dashboard[data-station="shinjuku"]{--station-accent:#7653a7;--station-ink:#62438e;--station-pale:#f1ebfc;--station-tint:#f9f6ff;--station-border:#d9c8ee}
+.stationAware.panel{border-color:var(--station-border);box-shadow:0 4px 16px #183c3c0a}
+.stationAware.panel .panelHead{background:var(--station-pale);border-bottom-color:var(--station-border);border-left:5px solid var(--station-accent);padding-left:17px}
+.stationAware.panel .panelHead h3{color:var(--station-ink)}
+.stationAware.panel .pill{background:#fff;color:var(--station-ink);border:1px solid var(--station-border)}
+.stationAware.panel .paneBody{background:var(--station-tint)}
+.stationAware.panel .boxLite{background:#fff;border-color:var(--station-border)}
+.stationAware.panel .boxLite .eyebrow{color:var(--station-accent)}
+.stationAware.panel .timechip{border-color:var(--station-border);color:var(--station-ink)}
+.stationAware.panel .recommended{background:var(--station-pale);box-shadow:inset 4px 0 var(--station-accent)}
+.stationAware.controls{background:var(--station-pale);border-color:var(--station-border)}
+.stationAware.controls input[type=range]{accent-color:var(--station-accent)}
+.stationAware.controls .deadline{background:#fff;border-color:var(--station-border);color:var(--station-ink)}
+.stationAware.plan .step:first-child{background:var(--station-pale);border-color:var(--station-border);border-left:5px solid var(--station-accent);padding-left:15px}
+.stationAware.plan .step:first-child .count{color:var(--station-accent)}
+.stationAware.plan .step:first-child strong{color:var(--station-ink)}
+.stationAware.notes>div:nth-child(2){background:var(--station-pale);border-color:var(--station-border);border-top:5px solid var(--station-accent)}
+.stationAware.notes>div:nth-child(2) h3{color:var(--station-ink)}
+.stationAware.notes #districtMap .link{color:var(--station-accent)}
+.stationAware.hotelGrid .hotelCard{border-color:var(--station-border);background:var(--station-tint)}
+#dashboard .mapStop.active{background:var(--station-pale);box-shadow:inset 0 4px var(--station-accent)}
+@media(max-width:900px){.districts{grid-template-columns:repeat(2,minmax(0,1fr))}.district{min-height:205px;padding:20px}.district h3{font-size:26px}}
+@media(max-width:530px){.districts{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.district{min-height:219px;padding:14px 12px;border-radius:17px;gap:8px}.district h3{font-size:20px;line-height:1.16}.district .initial{width:35px;height:35px;font-size:19px;border-radius:10px}.district .districtArea{font-size:9px;letter-spacing:.06em}.district p{font-size:12px}.district .walk{font-size:11px;padding-top:8px}}
+@media(max-width:360px){.districts{grid-template-columns:1fr}.district{min-height:175px}.district h3{font-size:23px}}
 </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 </head>
@@ -71,7 +117,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 </div>
 </div>
 </header>
-<main class="container">
+<main class="container" id="dashboard" data-station="ueno">
 <section class="metrics">
 <div class="metric"><span>Dzielnice</span><b>4 warianty</b></div>
 <div class="metric"><span>Przesiadki</span><b>0</b></div>
@@ -87,15 +133,15 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 </div>
 <div class="sectionHead">
 <div>
-<h2>01 / Wybór dzielnicy</h2>
-<p>Kliknij dzielnicę, aby zobaczyć wieczorny dojazd z Narity i poranne połączenia zwrotne. Hotele i linki Booking.com są na samym dole.</p>
+<h2>01 / Wybór stacji kolejowej</h2>
+<p>Wybierz jeden z dużych kafelków. Kolor stacji pojawi się przy połączeniach, porannym planie i opisie dzielnicy. Hotele pozostają na dole strony.</p>
 </div>
 </div>
-<div class="districts" id="districts">
-<button aria-pressed="true" class="district" data-id="ueno"><span class="initial">U</span><h3>Ueno</h3><p>Najwygodniejszy transport: Keisei Skyliner. Najlepszy logistycznie dla ciężkiego bagażu.</p><div class="walk">Stacja: Keisei-Ueno</div></button>
-<button aria-pressed="false" class="district" data-id="asakusa"><span class="initial">A</span><h3>Asakusa</h3><p>Bardzo dobry kompromis: klimat dzielnicy i prosty dojazd na Naritę.</p><div class="walk">Stacja: Toei Asakusa</div></button>
-<button aria-pressed="false" class="district" data-id="tokyo"><span class="initial">T</span><h3>Marunouchi</h3><p>Tokyo Station i wygodny N'EX, ale zwykle najwyższe ceny noclegów.</p><div class="walk">Stacja: Tokyo</div></button>
-<button aria-pressed="false" class="district" data-id="shinjuku"><span class="initial">S</span><h3>Shinjuku</h3><p>Dobra na wieczory i nadal bez przesiadek, ale z większą stacją i dłuższym dojściem.</p><div class="walk">Stacja: Shinjuku</div></button>
+<div class="districts" id="districts" role="group" aria-label="Wybierz stację kolejową">
+<button aria-pressed="true" class="district" data-id="ueno" type="button"><span class="districtTop"><span class="initial" aria-hidden="true">🚆</span><span class="districtArea">UENO</span></span><h3>Keisei-Ueno <span>Station</span></h3><p>Skyliner · bezpośredni ekspres na Naritę</p><span class="walk">Najwygodniej z dużym bagażem</span></button>
+<button aria-pressed="false" class="district" data-id="asakusa" type="button"><span class="districtTop"><span class="initial" aria-hidden="true">🚆</span><span class="districtArea">ASAKUSA</span></span><h3>Asakusa <span>Station (Toei)</span></h3><p>Access Express · wybrane kursy bezpośrednie</p><span class="walk">Stare Tokio, dogodny dojazd</span></button>
+<button aria-pressed="false" class="district" data-id="tokyo" type="button"><span class="districtTop"><span class="initial" aria-hidden="true">🚆</span><span class="districtArea">MARUNOUCHI</span></span><h3>Tokyo <span>Station</span></h3><p>Narita Express · bez przesiadek</p><span class="walk">Centralny dworzec Tokio</span></button>
+<button aria-pressed="false" class="district" data-id="shinjuku" type="button"><span class="districtTop"><span class="initial" aria-hidden="true">🚆</span><span class="districtArea">SHINJUKU</span></span><h3>Shinjuku <span>Station</span></h3><p>Narita Express · bez przesiadek</p><span class="walk">Świetna okolica na wieczór</span></button>
 </div>
 
 <div class="sectionHead"><div><h2>02 / Tokyo station map</h2><p>OpenStreetMap Standard with all four stations visible. No map API key is required.</p></div></div>
@@ -114,11 +160,11 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 
 <div class="sectionHead">
 <div>
-<h2>03 / Szczegóły dla wybranej dzielnicy</h2>
+<h2>03 / Szczegóły wybranej stacji</h2>
 <p>Wieczorny dojazd po przylocie i poranny powrót na lotnisko.</p>
 </div>
 </div>
-<section class="panel">
+<section class="panel stationAware" id="arrivalPanel">
 <div class="panelHead">
 <div>
 <h3 id="arrivalTitle">Narita T1 → Keisei-Ueno</h3>
@@ -148,7 +194,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 <p>Suń bufor, aby zobaczyć, które pociągi dowożą Was przed Terminal 1 z zapasem. W każdej dzielnicy pominięto 2 najwcześniejsze kursy.</p>
 </div>
 </div>
-<div class="controls">
+<div class="controls stationAware">
 <div class="rangeBox">
 <label for="bufferRange">Zapas przed 10:00 na Terminalu 1</label>
 <input id="bufferRange" max="60" min="15" step="5" type="range" value="15"/>
@@ -156,7 +202,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 </div>
 <div class="deadline" id="deadlineText">Pociąg powinien dowieźć Was do terminalu najpóźniej ok. 09:45.</div>
 </div>
-<section class="panel">
+<section class="panel stationAware" id="returnPanel">
 <div class="panelHead">
 <div>
 <h3 id="returnTitle">Keisei-Ueno → Narita T1</h3>
@@ -180,15 +226,15 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 </div>
 <div class="legend" id="tableNote"></div>
 </section>
-<div class="sectionHead"><div><h2>06 / Proponowany plan na 24.01</h2><p>Przy założeniu, że o 10:00 chcecie już stać przed terminalem.</p></div></div>
-<section class="plan">
+<div class="sectionHead"><div><h2>05 / Proponowany plan na 24.01</h2><p>Przy założeniu, że o 10:00 chcecie już stać przed terminalem.</p></div></div>
+<section class="plan stationAware">
 <div class="step"><div class="count">ETAP 01</div><strong id="planTrain">07:40 → 08:25</strong><p id="planTrainDesc">Bezpośredni pociąg do Narita T1.</p></div>
 <div class="step"><div class="count">ETAP 02</div><strong>Dojście z peronu</strong><p>Przyjmij około 10 minut na wyjście z peronu i dojście przed terminal.</p></div>
 <div class="step"><div class="count">ETAP 03</div><strong>Odbiór quiverów</strong><p>Dopiero po dotarciu przed terminal odbierzcie quivery z przechowalni i zbierzcie grupę.</p></div>
 <div class="step"><div class="count">ETAP 04</div><strong>Shuttle + 3 auta</strong><p>Po kontakcie z YESAWAY przejazd shuttle do oddziału i formalności odbioru trzech aut.</p></div>
 </section>
 <div class="sectionHead"><div><h2>07 / Co warto wiedzieć</h2></div></div>
-<div class="notes">
+<div class="notes stationAware">
 <div>
 <h3>Bagaż i komfort</h3>
 <p>Przy maksymalnie 8 quiverach do 200 cm najlepsza jest baza blisko stacji i bez przesiadek. Pozostawienie sprzętu na lotnisku na 2 noce nadal wygląda sensownie, jeśli przechowalnia potwierdzi przyjęcie i godziny odbioru.</p>
@@ -246,7 +292,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
 <h2>11 / Hotele w wybranej dzielnicy</h2>
 <p>Kliknij dzielnicę u góry, aby zobaczyć jej hotele. Ceny obejmują 8 osób na 2 noce (22–24.01), chyba że oznaczono inaczej; kliknij Booking.com, aby sprawdzić finalne oferty.</p>
 </div>
-</div><div class="hotelGrid" id="hotelGrid"></div><footer>
+</div><div class="hotelGrid stationAware" id="hotelGrid"></div><footer>
 <b>Uwaga:</b> Dashboard ma charakter planistyczny i nie pobiera rozkładów na żywo. Ceny hoteli to sumy wskazanych taryf Booking.com za 2 noce, 22–24.01.2027, dla 8 osób; nie stanowią gwarancji rezerwacji. Taryfy ze „szczególnymi warunkami” mogą być bezzwrotne lub mieć inne ograniczenia. Gwiazdka (*) oznacza cenę z wyszukiwania ogólnego, bez potwierdzenia zgodnego układu łóżek. Przed zapłatą sprawdź cenę, konfigurację łóżek i zasady anulowania w koszyku.
     <div class="footlinks">
 <a href="https://www.keisei.co.jp/keisei/tetudou/skyliner/us/index.php" rel="noopener" target="_blank">Bilety Skyliner</a>
@@ -411,6 +457,8 @@ function render(){
   const buffer=Number($('bufferRange').value);
   const target=600-buffer; // target arrival before terminal
   document.querySelectorAll('.district').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.id===selected)));
+  $('dashboard').dataset.station=selected;
+  document.querySelectorAll('.mapStop').forEach(x=>x.classList.toggle('active',x.dataset.station===selected));
   $('arrivalTitle').textContent=d.arrivalTitle;
   $('arrivalDescription').textContent=d.arrivalDesc;
   $('arrivalService').textContent=d.arrivalService;
@@ -431,7 +479,7 @@ function render(){
     const label=cls==='safe'?'Spełnia bufor':cls==='tight'?'Mały zapas':'Za późno';
     const tr=document.createElement('tr');
     tr.className=dep===d.preferred?'recommended':'';
-    tr.innerHTML='<td class="time">'+dep+(dep===d.preferred?' <span style="font-size:10px;color:#0e785f">★</span>':'')+'</td><td class="time">'+arr+'</td><td>'+train+'</td><td class="time">'+fmt(eta)+'</td><td><span class="status '+cls+'">'+label+'</span></td>';
+    tr.innerHTML='<td class="time">'+dep+(dep===d.preferred?' <span style="font-size:10px;color:var(--station-accent)">★</span>':'')+'</td><td class="time">'+arr+'</td><td>'+train+'</td><td class="time">'+fmt(eta)+'</td><td><span class="status '+cls+'">'+label+'</span></td>';
     tbody.appendChild(tr);
   });
   $('tableNote').textContent='Szacowane dotarcie przed terminal = przyjazd pociągu do Narita Airport Terminal 1 + około 10 minut na wyjście z peronu i dojście przed terminal. Bufor suwaka oznacza, ile minut przed 10:00 chcecie już tam być.';
