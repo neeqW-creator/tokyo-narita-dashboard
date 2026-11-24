@@ -150,12 +150,7 @@ footer{margin-top:44px;padding-top:23px;border-top:1px solid var(--line);font-si
     <iframe title="Tokyo area street map" loading="lazy" width="100%" height="100%" style="border:0;display:block" src="https://www.openstreetmap.org/export/embed.html?bbox=139.687%2C35.673%2C139.807%2C35.726&amp;layer=mapnik"></iframe>
   </div>
   <div class="mapCaption"><strong>Map view:</strong> Shinjuku • Tokyo Station • Keisei-Ueno • Asakusa. Station pins and descriptions are in English. Some base-map street labels may be in Japanese because raster tiles include their own text. <button type="button" id="mapReset" class="mapReset">Show all 4 stations</button></div>
-  <div class="mapLegend" id="mapLegend" aria-label="Tokyo railway stations">
-    <button class="mapStop" data-station="ueno" type="button"><b>Keisei-Ueno Station</b><small>Keisei Skyliner · Direct to Narita Airport</small></button>
-    <button class="mapStop" data-station="asakusa" type="button"><b>Asakusa Station (Toei)</b><small>Keisei Access Express · Some direct services to Narita</small></button>
-    <button class="mapStop" data-station="tokyo" type="button"><b>Tokyo Station</b><small>JR Narita Express · Direct to Narita Airport</small></button>
-    <button class="mapStop" data-station="shinjuku" type="button"><b>Shinjuku Station</b><small>JR Narita Express · Direct to Narita Airport</small></button>
-  </div>
+
 </section>
 
 <div class="sectionHead">
@@ -458,7 +453,6 @@ function render(){
   const target=600-buffer; // target arrival before terminal
   document.querySelectorAll('.district').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.id===selected)));
   $('dashboard').dataset.station=selected;
-  document.querySelectorAll('.mapStop').forEach(x=>x.classList.toggle('active',x.dataset.station===selected));
   $('arrivalTitle').textContent=d.arrivalTitle;
   $('arrivalDescription').textContent=d.arrivalDesc;
   $('arrivalService').textContent=d.arrivalService;
@@ -493,7 +487,6 @@ function render(){
 document.querySelectorAll('.district').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.id;render()}));
 $('bufferRange').addEventListener('input',render);
 initStationMap();
-document.querySelectorAll(".mapStop").forEach(b=>b.addEventListener("click",()=>selectMapStation(b.dataset.station)));
 const resetButton=document.getElementById("mapReset");if(resetButton)resetButton.addEventListener("click",resetStationMapView);
 render();
 </script>
